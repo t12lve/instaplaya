@@ -1,0 +1,10 @@
+node_modules/
+__pycache__/
+*.pyc
+static/
+review/
+.playwright-mcp/
+.hallmark/
+.hallmark-polish*.py
+.DS_Store
+*.log
