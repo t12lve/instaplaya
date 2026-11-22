@@ -63,7 +63,7 @@ export default function App() {
   });
   const [mobileView, setMobileView] = useState('studio'); // 'studio' | 'panel'
   const [markerPulse, setMarkerPulse] = useState(false);
-  const [backendAvailable, setBackendAvailable] = useState(false);
+  const backendAvailable = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
 
   const notify = useCallback((msg) => {
     setStatusNotification(msg);
@@ -72,14 +72,6 @@ export default function App() {
   }, []);
 
   useEffect(() => () => clearTimeout(notifyTimer.current), []);
-
-  useEffect(() => {
-    let alive = true;
-    fetch('/api/extract', { method: 'OPTIONS' })
-      .then((r) => { if (alive) setBackendAvailable(r.ok || r.status === 405); })
-      .catch(() => { if (alive) setBackendAvailable(false); });
-    return () => { alive = false; };
-  }, []);
 
   useEffect(() => {
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
