@@ -27,13 +27,13 @@ jobs:
       - name: Installer les dépendances
         run: npm ci
         working-directory: frontend
-      - name: Construire l'application
-        run: npm run build
+      - name: Construire la page de présentation
+        run: npm run build:landing
         working-directory: frontend
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: static
+          path: landing-dist
 
   deploy:
     needs: build

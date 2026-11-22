@@ -1,26 +1,50 @@
 # InstaPlaya
 
-Lecteur de précision pour Reels et vidéos Instagram sur ordinateur.
+Studio de lecture précise pour Reels et vidéos Instagram sur ordinateur.
 
-L'interface est une application React : lecture image par image, vitesse calibrée, boucle A-B et repères horodatés. Un court bandeau en haut rappelle le but de l'outil.
+Le dépôt contient deux choses :
+- `frontend/` : l'application React, à lancer en local avec le serveur Python.
+- `frontend/src/landing.jsx` : la page de présentation React publiée sur GitHub Pages. Les sections se dévoilent au scroll dans le même système visuel.
 
-## Utiliser l'application
+## GitHub Pages
+
+https://t12lve.github.io/instaplaya/
+
+Cette page présente le principe de l'outil. Elle est construite en React depuis `frontend/src/landing.jsx` et révèle chaque section au scroll. Elle ne contient pas l'application : l'extraction d'un Reel nécessite un serveur local. Le workflow `.github/workflows/deploy.yml` construit et publie `landing-dist/` à chaque push sur `main`.
+
+## Lancer l'application
+
+Sous Windows, double-cliquer sur `run.bat`. Le script installe les dépendances si besoin, construit l'application puis démarre le serveur sur http://localhost:8080.
+
+En ligne de commande :
+
+```bash
+cd frontend
+npm install
+npm run build
+cd ..
+python app.py
+```
+
+Prérequis : Python avec FastAPI, yt-dlp, httpx et uvicorn, plus Node.js.
+
+## Utilisation
 
 Trois façons de charger une vidéo :
 
-1. **Importer un fichier** : bouton *Importer une vidéo*, ou glisser-déposer un MP4, WebM ou MOV sur la scène.
-2. **Lien vidéo direct** : coller une URL se terminant par `.mp4`, `.webm`, `.ogg`, `.mov` ou `.m4v`, puis *Charger*.
-3. **Lien Instagram** : coller `https://www.instagram.com/reel/…`. Cette option demande le serveur local (voir ci-dessous).
+1. Importer un fichier MP4, WebM ou MOV, ou le glisser-déposer sur la scène.
+2. Coller un lien vidéo direct se terminant par `.mp4`, `.webm`, `.ogg`, `.mov` ou `.m4v`.
+3. Coller un lien Instagram `https://www.instagram.com/reel/…` avec le serveur local actif.
 
 Les repères et l'historique sont conservés dans le navigateur.
 
 ## Fonctionnalités
 
 - Navigation à l'image près (0,04 s à 25 fps), sauts ±1 s et ±5 s
-- Vitesse de 0,10x à 3,00x (préréglages et curseur)
+- Vitesse de 0,10x à 3,00x, préréglages et curseur
 - Boucle A-B avec zone visible sur la timeline
 - Repères annotés, sauvegardés par vidéo
-- Zoom 1x à 3x, rotation 90°, mute, Picture-in-Picture, plein écran
+- Zoom 1x à 3x, rotation 90°, Picture-in-Picture, plein écran
 - Thème clair et sombre, raccourcis clavier complets
 
 ## Raccourcis clavier
@@ -40,39 +64,6 @@ Les repères et l'historique sont conservés dans le navigateur.
 | `F` | Plein écran |
 | `?` | Aide |
 
-## Développement local
+## Dépôt
 
-Le backend Python fournit l'extraction Instagram et le téléchargement MP4.
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Dans un autre terminal :
-
-```bash
-python app.py
-```
-
-L'application est alors disponible sur `http://localhost:8080`. Le serveur Vite (`http://localhost:3000`) proxifie `/api` vers le backend.
-
-Construire les fichiers statiques dans `static/` :
-
-```bash
-cd frontend
-npm run build
-```
-
-## GitHub Pages
-
-Le site publié est l'application elle-même, en mode statique. Le workflow `.github/workflows/deploy.yml` construit `frontend/` et publie `static/` via l'action officielle GitHub Pages.
-
-1. Créer le dépôt puis pousser sur `main`.
-2. Dans *Settings → Pages → Build and deployment*, choisir **GitHub Actions**.
-3. Attendre la fin du workflow *Deploy to GitHub Pages*.
-
-Le chemin des assets est relatif (`base: './'`), donc l'application fonctionne aussi bien à la racine que sur `https://<utilisateur>.github.io/<dépôt>/`. Le fichier `.nojekyll` est copié dans `static/` pour éviter tout traitement Jekyll.
-
-Sur Pages, l'extraction Instagram et le téléchargement MP4 ne sont pas disponibles : le bouton de téléchargement est masqué et le champ accepte un lien vidéo direct. En local avec `app.py`, ces deux fonctions restent actives.
+https://github.com/t12lve/instaplaya

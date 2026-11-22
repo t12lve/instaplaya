@@ -2,6 +2,7 @@ node_modules/
 __pycache__/
 *.pyc
 static/
+landing-dist/
 review/
 .playwright-mcp/
 .hallmark/

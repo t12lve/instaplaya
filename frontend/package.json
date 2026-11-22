@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "build:landing": "vite build --config vite.landing.config.js && node scripts/rename-landing.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
