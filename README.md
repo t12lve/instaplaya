@@ -1,6 +1,6 @@
 # InstaPlaya
 
-Studio de lecture précise pour Reels et vidéos Instagram sur ordinateur.
+Le lecteur Instagram sur PC est une plaie : pas de saut à l'image, pas de ralenti fin, pas de boucle A-B, aucun repère. On a donc fait InstaPlaya, un studio de lecture précise pour Reels et vidéos Instagram sur ordinateur.
 
 Le dépôt contient deux choses :
 - `frontend/` : l'application React, à lancer en local avec le serveur Python.

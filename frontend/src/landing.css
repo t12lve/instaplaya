@@ -50,6 +50,8 @@ body {
 }
 .skip-link:focus { top: 12px; }
 
+.noscript { font-family: var(--font-sans); max-width: 680px; margin: 80px auto; padding: 0 24px; color: var(--ink); }
+
 .wrap { width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 40px; }
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 

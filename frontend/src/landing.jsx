@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import appUi from './assets/app-ui.png';
-import './landing.css';
 
 document.documentElement.classList.add('js');
 
@@ -79,14 +78,14 @@ function Landing() {
           <div className="wrap hero-grid">
             <div className="hero-copy">
               <h1>Le Reel, image par image.</h1>
-              <p>InstaPlaya ralentit, boucle et marque chaque geste sur votre machine.</p>
+              <p>Le lecteur Instagram sur PC est une plaie. On a fait InstaPlaya.</p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href="#install">Démarrer sur mon PC</a>
                 <a className="btn btn-quiet" href="#principe">Voir le principe</a>
               </div>
             </div>
             <figure className="hero-visual">
-              <img src={appUi} alt="L’interface d’InstaPlaya pendant l’analyse d’une vidéo" width="1440" height="900" />
+              <img src={appUi} alt="L’interface d’InstaPlaya pendant l’analyse d’une vidéo" width="1440" height="900" fetchPriority="high" />
             </figure>
           </div>
         </section>
@@ -112,7 +111,7 @@ function Landing() {
           <div className="wrap">
             <div className="reveal">
               <h2>La précision se commande.</h2>
-              <p className="lede narrow">Chaque action énonce son résultat : timecode, numéro d’image, vitesse. Aucun état implicite.</p>
+              <p className="lede narrow">Ralentir un Reel, avancer image par image, boucler un passage A-B ou poser un repère : chaque action énonce son résultat.</p>
             </div>
             <div className="transport-demo reveal" style={{ transitionDelay: '80ms' }} aria-label="Aperçu des commandes de lecture">
               <div className="demo-group">
